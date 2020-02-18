@@ -39,6 +39,7 @@
         android:fontFamily="@font/tcb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onChecked_10_a"
         android:layout_below="@+id/psqi_q10_addition_a"
         android:text="지난 한 달간 없었다" />
 
@@ -47,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_a"
         android:layout_below="@+id/a_checkBox1"
         android:text="주당 한번 이하" />
 
@@ -54,6 +56,7 @@
         android:id="@+id/a_checkBox3"
         android:layout_width="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_a"
         android:layout_height="wrap_content"
         android:layout_below="@+id/a_checkBox2"
         android:text="주당 한 두 번" />
@@ -62,6 +65,7 @@
         android:id="@+id/a_checkBox4"
         android:layout_width="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_a"
         android:layout_height="wrap_content"
         android:layout_below="@+id/a_checkBox3"
         android:text="주당 세 번 혹 그 이상" />
@@ -82,6 +86,7 @@
         android:layout_width="wrap_content"
         android:fontFamily="@font/tcb"
         android:layout_height="wrap_content"
+        android:onClick="onChecked_10_b"
         android:layout_below="@+id/psqi_q10_addition_b"
         android:text="지난 한 달간 없었다" />
 
@@ -90,6 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_b"
         android:layout_below="@+id/b_checkBox1"
         android:text="주당 한번 이하" />
 
@@ -98,6 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_b"
         android:layout_below="@+id/b_checkBox2"
         android:text="주당 한 두 번" />
 
@@ -106,6 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/b_checkBox3"
+        android:onClick="onChecked_10_b"
         android:fontFamily="@font/tcb"
         android:text="주당 세 번 혹 그 이상" />
 
@@ -123,6 +131,7 @@
     <CheckBox
         android:id="@+id/c_checkBox1"
         android:layout_width="wrap_content"
+        android:onClick="onChecked_10_c"
         android:fontFamily="@font/tcb"
         android:layout_height="wrap_content"
         android:layout_below="@+id/psqi_q10_addition_c"
@@ -133,6 +142,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_c"
         android:layout_below="@+id/c_checkBox1"
         android:text="주당 한번 이하" />
 
@@ -141,6 +151,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_c"
         android:layout_below="@+id/c_checkBox2"
         android:text="주당 한 두 번" />
 
@@ -149,6 +160,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_c"
         android:layout_below="@+id/c_checkBox3"
         android:text="주당 세 번 혹 그 이상" />
 

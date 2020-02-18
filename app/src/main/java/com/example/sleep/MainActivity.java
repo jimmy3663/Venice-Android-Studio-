@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                             //save();
                         }
                         else{
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), popuplogin.class);
                             startActivity(intent);
                             Log.w("login Fail", "login Fail");
                         }

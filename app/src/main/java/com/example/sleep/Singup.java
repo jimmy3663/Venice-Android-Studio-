@@ -34,7 +34,7 @@ public class Singup extends AppCompatActivity {
     private DataOutputStream dos;
     private DataInputStream dis;
 
-    private String ip = "192.168.0.22";            // IP 번호
+    private String ip = "192.168.2.1";            // IP 번호
     private int port = 9998;
 
     @Override
@@ -202,7 +202,7 @@ public class Singup extends AppCompatActivity {
                         final int val = Integer.parseInt(line);
                         System.out.println(val);
                         if(val >= 1) {
-                            Intent intent = new Intent(getApplicationContext(), Singup.class);
+                            Intent intent = new Intent(getApplicationContext(), popupsign.class);
                             startActivity(intent);
 
                         }

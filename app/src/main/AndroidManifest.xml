@@ -19,7 +19,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".alarm"></activity>
+        <activity android:name=".popuplogin"
+            android:screenOrientation="portrait"
+            android:theme="@style/popupTheme"></activity>
+        <activity
+            android:name=".popupsign"
+            android:screenOrientation="portrait"
+            android:theme="@style/popupTheme" />
+        <activity
+            android:name=".pop4apnea"
+            android:screenOrientation="portrait"
+            android:theme="@style/popupTheme" />
+        <activity android:name=".alarm" />
         <activity android:name=".gettingphoto" />
         <activity android:name=".sleepytime_cal" />
         <activity android:name=".sleepytime" />
@@ -42,12 +53,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".popup" />
         <activity android:name=".Singup" />
         <activity android:name=".Recording" />
         <activity android:name=".Check_Apnea" />
         <activity android:name=".Subactivity" />
         <activity android:name=".MainActivity" />
+        <activity
+            android:name=".PopupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/popupTheme" />
     </application>
 
 </manifest>

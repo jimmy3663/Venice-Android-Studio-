@@ -1,5 +1,6 @@
 package com.example.sleep;
 
+import android.content.Intent;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,9 @@ import java.lang.String;
 
 public class Check_Apnea extends AppCompatActivity {
 
+    EditText year, month, day;
+    String st_year, st_month, st_day;
+
     private Socket socket;
 
     private Handler mHandler;
@@ -27,7 +31,7 @@ public class Check_Apnea extends AppCompatActivity {
     private DataOutputStream dos;
     private DataInputStream dis;
 
-    private String ip = "192.168.0.22";            // IP 번호
+    private String ip = "192.168.2.1";            // IP 번호
     private int port = 9998;                          // port 번호
 
     TextView show_text;
@@ -36,16 +40,29 @@ public class Check_Apnea extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check__apnea);
         show_text = (TextView)findViewById(R.id.show_text);
-        connect();
+        year = (EditText)findViewById(R.id.yearInput);
+        month = (EditText)findViewById(R.id.monthInput);
+        day = (EditText)findViewById(R.id.dayInput);
+
+        final Button sbtn = (Button)findViewById(R.id.submit_button);
+
     }
-    void connect(){
+
+    public void submit_button(View view){
+        st_year = year.getText().toString();
+        st_month = month.getText().toString();
+        st_day = day.getText().toString();
+
+        connect(st_year, st_month, st_day);
+    }
+    void connect(final String syear, final String smonth, final String sday){
         mHandler = new Handler();
         Log.w("connect","연결 하는중");
         // 받아오는거
         Thread checkUpdate = new Thread() {
             public void run() {
 
-                String send_value = "Search";
+                String send_value = "S"+syear+"-"+smonth+"-"+sday;
                 // 서버 접속
                 try {
                     socket = new Socket(ip, port);
@@ -72,24 +89,33 @@ public class Check_Apnea extends AppCompatActivity {
                 try {
                     while(true) {
                         String line = (String)dis.readUTF();
-                        final String Info[] = line.split("\\+");
 
-                        show_text.post(new Runnable() {
-                            public void run() {
-                                show_text.setText("수면중 무호흡 횟수는");
-                                show_text.append(Info[0]);
-                                show_text.append("이며 \n");
-                                Info_print(Info[1]);
-                                show_text.append("수면중 가장 큰 소음은");
-                                show_text.append(Info[2]);
-                                show_text.append("dB이며 \n");
-                                sound_print(Info[2]);
-                                show_text.append("평균 코골이의 정도는");
-                                show_text.append(Info[3]);
-                                show_text.append("dB 입니다.\n");
+                        System.out.println(""+line.length());
+                        int val = line.length();
+                        if(val == 1){
+                            Intent intent = new Intent(getApplicationContext(), pop4apnea.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            final String Info[] = line.split("\\+");
 
-                            }
-                        });
+                            show_text.post(new Runnable() {
+                                public void run() {
+                                    show_text.setText("수면중 무호흡 횟수는");
+                                    show_text.append(Info[0]);
+                                    show_text.append("이며 \n");
+                                    Info_print(Info[1]);
+                                    show_text.append("수면중 가장 큰 소음은");
+                                    show_text.append(Info[2]);
+                                    show_text.append("dB이며 \n");
+                                    sound_print(Info[2]);
+                                    show_text.append("평균 코골이의 정도는");
+                                    show_text.append(Info[3]);
+                                    show_text.append("dB 입니다.\n");
+
+                                }
+                            });
+                        }
 
                     }
 
@@ -141,6 +167,12 @@ public class Check_Apnea extends AppCompatActivity {
         else {
             show_text.append("소음이 심한 공장의 소음보다 큰 소리입니다.\n");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Subactivity.class);
+        startActivity(intent);
     }
 }
 
