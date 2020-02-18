@@ -38,8 +38,8 @@
 
     <Button
         android:fontFamily="@font/tcb"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/min"
         android:background="#000"
         android:textColor="#fff"
@@ -49,4 +49,3 @@
         android:layout_centerHorizontal="true"
         />
 </RelativeLayout>
-

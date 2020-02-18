@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_d"
         android:layout_below="@+id/psqi_q10_d"
         android:text="지난 한 달간 없었다" />
 
@@ -37,6 +38,7 @@
         android:layout_width="wrap_content"
         android:fontFamily="@font/tcb"
         android:layout_height="wrap_content"
+        android:onClick="onChecked_10_d"
         android:layout_below="@+id/d_checkBox1"
         android:text="주당 한번 이하" />
 
@@ -45,6 +47,7 @@
         android:layout_width="wrap_content"
         android:fontFamily="@font/tcb"
         android:layout_height="wrap_content"
+        android:onClick="onChecked_10_d"
         android:layout_below="@+id/d_checkBox2"
         android:text="주당 한 두 번" />
 
@@ -53,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/tcb"
+        android:onClick="onChecked_10_d"
         android:layout_below="@+id/d_checkBox3"
         android:text="주당 세 번 혹 그 이상" />
 

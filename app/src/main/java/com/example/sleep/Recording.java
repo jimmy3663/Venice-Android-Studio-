@@ -25,6 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.File;
 
+import java.lang.String;
 
 import java.lang.InterruptedException;
 
@@ -36,7 +37,7 @@ public class Recording extends AppCompatActivity {
 
     //Socekt programming
     private Socket socket;
-    private String ip = "192.168.0.22";            // IP 번호
+    private String ip = "192.168.0.6";            // IP 번호
     private int port = 9998;                          // port 번호
     DataOutputStream dos;
 
@@ -71,7 +72,7 @@ public class Recording extends AppCompatActivity {
     // 타이머 상수
     // 44100Hz로 Sampling시 17620byte 크기의 버퍼로 가져올시 5번 가져와야 1초 분량의 소리를 가져올 수 있다.
     // 5번 read로 1초이므로 1분은 300번 read해야 한다.
-    public int TimeLimit = 150;
+    public int TimeLimit = 60;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ public class Recording extends AppCompatActivity {
         setContentView(R.layout.activity_recording);
 
         BtnRecord = (Button) findViewById(R.id.BtnRecord);
+
 
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
@@ -124,16 +126,18 @@ public class Recording extends AppCompatActivity {
 
 
     public void Recording() {
-
-///////////////////////////////////////Socket 연결//////////////////////////
-            try {
-                socket = new Socket(ip, port);
-                Log.w("서버 접속됨", "서버 접속됨");
-            } catch (IOException e1) {
-                Log.w("서버접속못함", "서버접속못함");
-                e1.printStackTrace();
+        ///////////////////////////////////////Socket 연결//////////////////////////
+        try {
+            if (socket == null) {
+                socket = new Socket(ip,port);
             }
-
+            dos  = new DataOutputStream(socket.getOutputStream());
+            Log.w("서버 접속됨", "서버 접속됨");
+        } catch (IOException e1) {
+            Log.w("서버접속못함", "서버접속못함");
+            e1.printStackTrace();
+        }
+        /////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////Recording///////////////////////////
         int cnt = 0;
         int f_cnt = 1;
@@ -142,7 +146,6 @@ public class Recording extends AppCompatActivity {
 
         try {
             fos = new FileOutputStream(mFilepath + mFilename + f_cnt + mFileext);
-
         }catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -155,10 +158,7 @@ public class Recording extends AppCompatActivity {
                 try {
                     // 읽은 PCM Data를 파일로 저장
                     fos.write(readData, 0, mBufferSize);
-
-                    dos = new DataOutputStream(socket.getOutputStream());
                     dos.write(readData);
-                    //data 전송 부분
                 }catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -172,8 +172,7 @@ public class Recording extends AppCompatActivity {
                 f_cnt++;
                 try {
                     fos.close();
-                    dos.close(); //이 자식하면 서버의 if not newbuf문으로 들어가게 됨
-
+                    dos.writeUTF("N");
                     fos = new FileOutputStream(mFilepath + mFilename + f_cnt + mFileext);
                 }catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -182,14 +181,20 @@ public class Recording extends AppCompatActivity {
                 }
             }
         }
-
         mAudioRecord.stop();
         mAudioRecord.release();
         mAudioRecord = null;
         try {
             fos.close();
-            dos.close();//이 자식하면 서버의 if not newbuf문으로 들어가게 됨
+            dos.close();//이 자식하면 서버의 if not newbuf문으로 들어가게
+            /*
+            String send_value = "Search";
+            dos = new DataOutputStream(socket.getOutputStream());
+            dos.writeUTF(send_value);
+             */
             socket.close();
+            Intent intent = new Intent(getApplicationContext(), Subactivity.class);
+            startActivity(intent);
         }catch (IOException e) {
             e.printStackTrace();
         }

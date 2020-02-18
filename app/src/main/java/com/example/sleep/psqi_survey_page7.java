@@ -48,19 +48,7 @@ public class psqi_survey_page7 extends AppCompatActivity {
             }
         });
     }
-    /*
-    public void onChecked() {
-        if(q9_cb1.isChecked()) q9_result= 1;
-        if(q9_cb2.isChecked()) q9_result= 2;
-        if(q9_cb3.isChecked()) q9_result= 3;
-        if(q9_cb4.isChecked()) q9_result= 4;
 
-        if(q10_cb1.isChecked()) q10_result= 1;
-        if(q10_cb2.isChecked()) q10_result= 2;
-        if(q10_cb3.isChecked()) q10_result= 3;
-        if(q10_cb4.isChecked()) q10_result= 4;
-    }
-    */
     public void onChecked_q9(View v) {
 
         boolean checked = ((CheckBox) v).isChecked();

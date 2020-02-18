@@ -114,4 +114,10 @@ public class sleepytime extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), Subactivity.class);
+        startActivity(intent);
+    }
 }

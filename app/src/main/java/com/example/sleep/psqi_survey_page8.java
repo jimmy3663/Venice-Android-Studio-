@@ -47,28 +47,125 @@ public class psqi_survey_page8 extends AppCompatActivity {
         {
             @Override
             public void onClick(View v){
-                onChecked();
                 setq10_a_b_c(a_result,b_result,c_result);
                 Intent intent = new Intent(getApplicationContext(),psqi_survey_page9.class);
                 startActivity(intent);
             }
         });
     }
-    public void onChecked() {
-        if(a_cb1.isChecked()) a_result= 1;
-        if(a_cb2.isChecked()) a_result= 2;
-        if(a_cb3.isChecked()) a_result= 3;
-        if(a_cb4.isChecked()) a_result= 4;
+    public void onChecked_10_a(View v){
+        boolean checked = ((CheckBox) v).isChecked();
+        switch (v.getId()){
+            case R.id.a_checkBox1:
+                if(checked){
+                    a_result = 1;
+                    a_cb2.setChecked(false);
+                    a_cb3.setChecked(false);
+                    a_cb4.setChecked(false);
+                }
+                break;
+            case R.id.a_checkBox2:
+                if(checked){
+                    a_result = 2;
+                    a_cb1.setChecked(false);
+                    a_cb3.setChecked(false);
+                    a_cb4.setChecked(false);
+                }
+                break;
+            case R.id.a_checkBox3:
+                if(checked){
+                    a_result = 3;
+                    a_cb1.setChecked(false);
+                    a_cb2.setChecked(false);
+                    a_cb4.setChecked(false);
+                }
+                break;
+            case R.id.a_checkBox4:
+                if(checked){
+                    a_result = 4;
+                    a_cb1.setChecked(false);
+                    a_cb2.setChecked(false);
+                    a_cb3.setChecked(false);
+                }
+                break;
+        }
 
-        if(b_cb1.isChecked()) b_result= 1;
-        if(b_cb2.isChecked()) b_result= 2;
-        if(b_cb3.isChecked()) b_result= 3;
-        if(b_cb4.isChecked()) b_result= 4;
+    }
+    public void onChecked_10_b(View v){
+        boolean checked = ((CheckBox) v).isChecked();
+        switch (v.getId()){
+            case R.id.b_checkBox1:
+                if(checked){
+                    b_result = 1;
+                    b_cb2.setChecked(false);
+                    b_cb3.setChecked(false);
+                    b_cb4.setChecked(false);
+                }
+                break;
+            case R.id.b_checkBox2:
+                if(checked){
+                    b_result = 2;
+                    b_cb1.setChecked(false);
+                    b_cb3.setChecked(false);
+                    b_cb4.setChecked(false);
+                }
+                break;
+            case R.id.b_checkBox3:
+                if(checked){
+                    b_result = 3;
+                    b_cb1.setChecked(false);
+                    b_cb2.setChecked(false);
+                    b_cb4.setChecked(false);
+                }
+                break;
+            case R.id.b_checkBox4:
+                if(checked){
+                    b_result = 4;
+                    b_cb1.setChecked(false);
+                    b_cb2.setChecked(false);
+                    b_cb3.setChecked(false);
+                }
+                break;
+        }
 
-        if(c_cb1.isChecked()) c_result= 1;
-        if(c_cb2.isChecked()) c_result= 2;
-        if(c_cb3.isChecked()) c_result= 3;
-        if(c_cb4.isChecked()) c_result= 4;
+    }
+    public void onChecked_10_c(View v){
+        boolean checked = ((CheckBox) v).isChecked();
+        switch (v.getId()){
+            case R.id.c_checkBox1:
+                if(checked){
+                    c_result = 1;
+                    c_cb2.setChecked(false);
+                    c_cb3.setChecked(false);
+                    c_cb4.setChecked(false);
+                }
+                break;
+            case R.id.c_checkBox2:
+                if(checked){
+                    c_result = 2;
+                    c_cb1.setChecked(false);
+                    c_cb3.setChecked(false);
+                    c_cb4.setChecked(false);
+                }
+                break;
+            case R.id.c_checkBox3:
+                if(checked){
+                    c_result = 3;
+                    c_cb1.setChecked(false);
+                    c_cb2.setChecked(false);
+                    c_cb4.setChecked(false);
+                }
+                break;
+            case R.id.c_checkBox4:
+                if(checked){
+                    c_result = 4;
+                    c_cb1.setChecked(false);
+                    c_cb2.setChecked(false);
+                    c_cb3.setChecked(false);
+                }
+                break;
+        }
+
     }
     @Override
     public void onBackPressed() {
